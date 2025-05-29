@@ -165,19 +165,6 @@ class HomeScreen extends StatelessWidget {
                 }
 
                 return GridView.builder(
-                  itemCount: controller.meals.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 3 / 4,
-                  ),
-                  itemBuilder: (_, index) {
-                    final item = controller.meals[index];
-                    final imageUrl = item.strMealThumb ?? '';
-                    final title = item.strMeal ?? 'Unknown Meal';
-
-                    return GridView.builder(
                       itemCount: controller.meals.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -196,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
+                                color:  Color.fromRGBO(158, 158, 158, 0.1),
                                 blurRadius: 8,
                                 offset: Offset(0, 4),
                               ),
@@ -257,8 +244,6 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     );
-                  },
-                );
               }),
             ),
           ],
