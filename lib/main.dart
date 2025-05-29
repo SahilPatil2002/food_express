@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_express/models/theme.dart';
+import 'package:food_express/screens/home_page.dart';
+import 'package:get/get.dart';
+import 'dart:io';
+import 'dart:convert';
 
 void main() {
   runApp( MyApp());
@@ -7,14 +12,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-      ),
-      home:  MyHomePage(),
+      theme: theme,
+      home: HomeScreen(),
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -28,13 +34,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Food Express"),
+        title: Text("Food Express", ),
       ),
       body: Center(
         child: Text(
           'Food Express',
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
