@@ -40,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen>
     final yellow = Color.fromRGBO(250, 194, 45, 1);
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Color.fromRGBO(247, 245, 255, 1),
       body: SafeArea(
         child: Column(
           children: [
@@ -78,13 +78,13 @@ class _SearchScreenState extends State<SearchScreen>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Material(
-                elevation: 4,
+                // elevation: 1,
                 borderRadius: BorderRadius.circular(16),
                 child: Container(
                   height: 55,
                   decoration: BoxDecoration(
                     border: Border.all(color: yellow, width: 1.5),
-                    color: Colors.white,
+                    // color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 16),
@@ -130,11 +130,18 @@ class _SearchScreenState extends State<SearchScreen>
                 }
 
                 if (controller.searchResults.isEmpty) {
-                  return Center(
-                    child: Text(
-                      "No meals found.",
-                      style: GoogleFonts.poppins(color: Colors.grey),
-                    ),
+                  return Column(
+                    children: [
+                      Icon(
+                        Icons.restaurant_menu,
+                        size: 50,
+                        color: Colors.grey[400],
+                      ),
+                      Text(
+                        "No meals found.",
+                        style: GoogleFonts.poppins(color: Colors.grey),
+                      ),
+                    ],
                   );
                 }
 
@@ -146,7 +153,7 @@ class _SearchScreenState extends State<SearchScreen>
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      elevation: 4,
+                      elevation: 2,
                       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       child: Padding(
                         padding: const EdgeInsets.all(12),
@@ -158,7 +165,7 @@ class _SearchScreenState extends State<SearchScreen>
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: Color(0xFFfac22d),
+                                  color: Color.fromRGBO(250, 194, 45, 1),
                                   width: 2,
                                 ),
                                 image: DecorationImage(
@@ -177,6 +184,7 @@ class _SearchScreenState extends State<SearchScreen>
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
+                                      color: yellow
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -186,15 +194,15 @@ class _SearchScreenState extends State<SearchScreen>
                                     children: [
                                       Icon(
                                         Icons.location_on,
-                                        size: 14,
+                                        size: 15,
                                         color: Colors.grey,
                                       ),
                                       SizedBox(width: 4),
                                       Text(
                                         meal.strArea ?? 'Unknown',
                                         style: GoogleFonts.poppins(
-                                          fontSize: 13,
-                                          color: Colors.grey[700],
+                                          fontSize: 15,
+                                          color: Colors.black87,
                                         ),
                                       ),
                                     ],
@@ -205,7 +213,7 @@ class _SearchScreenState extends State<SearchScreen>
                             Icon(
                               Icons.arrow_forward_ios_rounded,
                               size: 16,
-                              color: Colors.grey,
+                              color: yellow,
                             ),
                           ],
                         ),

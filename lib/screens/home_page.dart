@@ -296,7 +296,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             SizedBox(height: 6),
 
-                            // Stars
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
@@ -311,7 +310,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             Spacer(),
 
-                            // Price and Add Button
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
