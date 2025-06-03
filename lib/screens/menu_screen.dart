@@ -44,7 +44,7 @@ class MenuScreen extends StatelessWidget {
             color: Color.fromARGB(255, 250, 194, 45),
           ),
         ),
-        backgroundColor:  Colors.white,
+        backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: IconThemeData(color: Color.fromARGB(255, 250, 194, 45)),
       ),
@@ -61,27 +61,43 @@ class MenuScreen extends StatelessWidget {
           return Center(child: Text("No meals found."));
         }
 
-        return GridView.builder(
-          itemCount: controller.meals.length,
-          padding: EdgeInsets.all(12),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 0.7,
+        return Padding(
+          padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+          child: GridView.builder(
+            itemCount: controller.meals.length,
+            padding: EdgeInsets.all(12),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.7,
+            ),
+            itemBuilder: (_, index) {
+              final item = controller.meals[index];
+              final imageUrl = item.strMealThumb ?? '';
+              final title = item.strMeal ?? 'Unknown Meal';
+              final category = item.strCategory ?? 'Unknown';
+              final area = item.strArea ?? 'Unknown';
+          
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(158, 158, 158, 0.5),
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: MealCard(meal: item, index: index),
+                ),
+              );
+            },
           ),
-          itemBuilder: (_, index) {
-            final item = controller.meals[index];
-            final imageUrl = item.strMealThumb ?? '';
-            final title = item.strMeal ?? 'Unknown Meal';
-            final category = item.strCategory ?? 'Unknown';
-            final area = item.strArea ?? 'Unknown';
-
-            return Padding(
-              padding: EdgeInsets.all(8.0),
-              child: MealCard(meal: item, index: index),
-            );
-          },
         );
       }),
     );

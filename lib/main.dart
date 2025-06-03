@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
           bottomNavigationBar: CurvedNavigationBar(
             index: navController.selectedIndex.value,
             height: 60,
-            color: Color(0xFFfac22d),
+            color: Color.fromRGBO(250, 194, 45, 1),
             backgroundColor: Colors.transparent,
             animationDuration: Duration(milliseconds: 300),
             onTap: navController.changePage,

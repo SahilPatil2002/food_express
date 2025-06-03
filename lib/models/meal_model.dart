@@ -6,6 +6,7 @@ class Meal {
   final String strMealThumb;
   final String? strCategory;
   final String? strArea;
+  final String? strInstructions;
 
   Meal({
     required this.idMeal,
@@ -13,6 +14,7 @@ class Meal {
     required this.strMealThumb,
     this.strCategory,
     this.strArea,
+    this.strInstructions,
   });
 
   factory Meal.fromJson(Map<String, dynamic> json) {
@@ -22,6 +24,7 @@ class Meal {
       strMealThumb: json['strMealThumb'] ?? '',
       strCategory: json['strCategory'],
       strArea: json['strArea'],
+      strInstructions: json['strInstructions'],
     );
   }
 }
