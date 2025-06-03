@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_express/controllers/category_controller.dart';
 import 'package:food_express/screens/search_screen.dart';
+import 'package:food_express/widgets/meal_card.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -111,19 +112,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10),
               Obx(() {
-                // Only show loader during initial category fetch
                 if (controller.isCategoryLoading.value) {
                   return Center(
-                    child: CircularProgressIndicator(color: Color(0xFFfac22d)),
+                    child: CircularProgressIndicator(color: Color.fromRGBO(250, 194, 45, 1)),
                   );
                 }
-
-                // If no categories found
                 if (controller.categories.isEmpty) {
                   return Center(child: Text("No categories found."));
                 }
-
-                // Show category bar
                 return SizedBox(
                   height: 40,
                   child: ListView.builder(
@@ -186,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (controller.isMealLoading.value) {
                     return Center(
                       child: CircularProgressIndicator(
-                        color: Color(0xFFfac22d),
+                        color: Color.fromRGBO(250, 194, 45, 1),
                       ),
                     );
                   }
@@ -211,139 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       final category = item.strCategory ?? 'Unknown';
                       final area = item.strArea ?? 'Unknown';
 
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 10,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        padding: EdgeInsets.all(12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            // Fixed image section
-                            Center(
-                              child: Container(
-                                width: 90,
-                                height: 90,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Color(0xFFfac22d),
-                                    width: 2,
-                                  ),
-                                ),
-                                child: ClipOval(
-                                  child: Image.network(
-                                    imageUrl,
-                                    fit: BoxFit.cover,
-                                    errorBuilder:
-                                        (_, __, ___) => Icon(
-                                          Icons.broken_image,
-                                          size: 40,
-                                          color: Colors.grey,
-                                        ),
-                                    loadingBuilder: (
-                                      context,
-                                      child,
-                                      loadingProgress,
-                                    ) {
-                                      if (loadingProgress == null) return child;
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          color: Color(0xFFfac22d),
-                                          strokeWidth: 2,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(height: 8),
-                            SizedBox(
-                              height: 40,
-                              child: Text(
-                                title,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-
-                            SizedBox(height: 5),
-
-                            // Category/Area Tags
-                            Wrap(
-                              alignment: WrapAlignment.center,
-                              spacing: 6,
-                              children: [
-                                // _buildTag(category, Icons.local_dining),
-                                _buildTag(area, Icons.location_on),
-                              ],
-                            ),
-
-                            SizedBox(height: 6),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                5,
-                                (_) => Icon(
-                                  Icons.star,
-                                  color: Color(0xFFfac22d),
-                                  size: 16,
-                                ),
-                              ),
-                            ),
-
-                            Spacer(),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  "\$${(10 + index * 2)}",
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Color(0xFFfac22d),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    // Add to cart logic
-                                  },
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Container(
-                                    padding: EdgeInsets.all(6),
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFfac22d),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 18,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
+                      return MealCard(meal: item, index: index);
                     },
                   );
                 }),
@@ -387,7 +251,7 @@ Widget _buildTag(String label, IconData icon) {
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 12, color: Color(0xFFfac22d)),
+        Icon(icon, size: 12, color: Color.fromRGBO(250, 194, 45, 1)),
         SizedBox(width: 4),
         Text(
           label,

@@ -67,4 +67,15 @@ class MealDbService {
     }
     return [];
   }
+
+  static Future<List<Meal>> fetchAllMeals() async {
+    final response = await _dio.get(
+      'https://www.themealdb.com/api/json/v1/1/search.php?s=',
+    );
+    if (response.statusCode == 200 && response.data['meals'] != null) {
+      final List meals = response.data['meals'];
+      return meals.map<Meal>((e) => Meal.fromJson(e)).toList();
+    }
+    return [];
+  }
 }
