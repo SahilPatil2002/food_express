@@ -44,6 +44,7 @@ class _SearchScreenState extends State<SearchScreen>
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(247, 245, 255, 1),
+
       body: SafeArea(
         child: Column(
           children: [
@@ -79,15 +80,14 @@ class _SearchScreenState extends State<SearchScreen>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding:  EdgeInsets.symmetric(horizontal: 16),
               child: Material(
-                // elevation: 1,
                 borderRadius: BorderRadius.circular(16),
                 child: Container(
                   height: 55,
                   decoration: BoxDecoration(
                     // border: Border.all(color: yellow, width: 1.5),
-                    // color: Colors.white,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 16),
@@ -153,7 +153,7 @@ class _SearchScreenState extends State<SearchScreen>
                     final meal = controller.searchResults[index];
                     final imageUrl = meal.strMealThumb ?? '';
                     return InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.to(() => ProductDetailScreen(meal: meal));
                       },
                       child: Container(
@@ -168,7 +168,7 @@ class _SearchScreenState extends State<SearchScreen>
                             image: NetworkImage(imageUrl),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
-                               Color.fromRGBO(0, 0, 0, 0.3),
+                              Color.fromRGBO(0, 0, 0, 0.1),
                               BlendMode.darken,
                             ),
                           ),
@@ -181,7 +181,7 @@ class _SearchScreenState extends State<SearchScreen>
                               BackdropFilter(
                                 filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                                 child: Container(
-                                  color:  Color.fromRGBO(0, 0, 0, 0.7),
+                                  color: Color.fromRGBO(0, 0, 0, 0.6),
                                 ),
                               ),
                               Padding(
@@ -194,7 +194,12 @@ class _SearchScreenState extends State<SearchScreen>
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: Color.fromRGBO(250, 194, 45, 1),
+                                          color: Color.fromRGBO(
+                                            250,
+                                            194,
+                                            45,
+                                            1,
+                                          ),
                                           width: 2,
                                         ),
                                         image: DecorationImage(
@@ -238,12 +243,18 @@ class _SearchScreenState extends State<SearchScreen>
                                                   vertical: 4,
                                                 ),
                                                 decoration: BoxDecoration(
-                                                  color: Color.fromRGBO(255, 244, 206, 1),
+                                                  color: Color.fromRGBO(
+                                                    255,
+                                                    244,
+                                                    206,
+                                                    1,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                 ),
                                                 child: Row(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   children: [
                                                     Icon(
                                                       Icons.fastfood,
@@ -259,11 +270,13 @@ class _SearchScreenState extends State<SearchScreen>
                                                     Text(
                                                       meal.strCategory ??
                                                           'Category',
-                                                      style: GoogleFonts.poppins(
-                                                        fontSize: 11,
-                                                        color: Colors.black,
-                                                        fontWeight: FontWeight.w500,
-                                                      ),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                            fontSize: 11,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -273,7 +286,7 @@ class _SearchScreenState extends State<SearchScreen>
                                         ],
                                       ),
                                     ),
-                      
+
                                     Icon(
                                       Icons.arrow_forward_ios_rounded,
                                       size: 16,

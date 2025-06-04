@@ -62,7 +62,7 @@ class MenuScreen extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+          padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 8, bottom: 8),
           child: GridView.builder(
             itemCount: controller.meals.length,
             padding: EdgeInsets.all(12),
