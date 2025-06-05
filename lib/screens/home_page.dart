@@ -19,23 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Color.fromRGBO(247, 245, 255, 1),
-      // appBar: AppBar(
-      //   systemOverlayStyle: SystemUiOverlayStyle.dark,
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   leading: Icon(Icons.menu, color: Colors.black),
-      //   centerTitle: true,
-      //   actions: [
-      //     Padding(
-      //       padding: EdgeInsets.all(10.0),
-      //       child: CircleAvatar(
-      //         backgroundImage: NetworkImage(
-      //           'https://e7.pngegg.com/pngimages/348/800/png-clipart-man-wearing-blue-shirt-illustration-computer-icons-avatar-user-login-avatar-blue-child-thumbnail.png',
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),

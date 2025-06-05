@@ -38,7 +38,7 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Top Favorite Meals 🍔',
+          'Bestsellers on the Menu',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 250, 194, 45),
